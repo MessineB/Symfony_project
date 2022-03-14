@@ -5,11 +5,15 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Entity\Trait\CreatedAtTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
+    // je rappelle le trait
+    use CreatedAtTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -17,9 +21,6 @@ class Post
 
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
-
-    #[ORM\Column(type: 'datetime')]
-    private $createdAt;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $status;
@@ -56,18 +57,6 @@ class Post
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }
