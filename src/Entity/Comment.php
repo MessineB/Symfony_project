@@ -5,14 +5,12 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use App\Entity\Trait\CreatedAtTrait;
+
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
-    // je rappelle le trai
-    use CreatedAtTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
