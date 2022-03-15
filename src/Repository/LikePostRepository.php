@@ -62,15 +62,15 @@ class LikePostRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?LikePost
+    
+    public function findOneByPost($post_id): ?LikePost
     {
         return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('l.post_id = :val')
+            ->setParameter('val', $post_id)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

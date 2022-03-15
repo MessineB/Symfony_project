@@ -1,7 +1,20 @@
 
 {% extends "base.html.twig"  %}
         {% block body %} 
-       <p> Bonjour je m'appelle Messine </p>
+        {% for post in posts %}
+        <div class="container"> 
+                <h1> {{post.title}} </h1>
+                <p><strong>Ce post a etait crée a : </strong>{{post.createdAt|date('d-m-Y h:i:s')}}
+                <p>{{post.content}}<p> 
+                <p>{{post.likePosts|length}} likes</p>
+                
+        </div>
+        {% endfor %} 
+        <form method="post">
+        <input type="text" name="title" placeholder="Nom du post"> 
+        <input class="content" type="text" name="content" placeholder="Contenu du post"> 
+        <input type="submit" value="Ajouter un post"> 
+    </form>
         {% endblock %}
 
    
