@@ -13,7 +13,6 @@ class AcceuilController extends AbstractController
     #[Route('/', name: 'main_page')]
     public function index(PostRepository $posts): Response
     {
-
         return $this->render('index.html.twig', [
             "posts" => $posts->findByDate() 
         ]);
