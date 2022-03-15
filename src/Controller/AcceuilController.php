@@ -11,6 +11,6 @@ class AcceuilController extends AbstractController
     #[Route('/', name: 'main_page')]
     public function index(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('base.html.twig');
     }
 }
