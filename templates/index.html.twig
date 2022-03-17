@@ -7,9 +7,14 @@
                 <p><strong>Ce post a etait crée le : </strong>{{post.createdAt|date('d-m-Y h:i:s')}}
                 <p>{{post.content}}<p> 
                 <div class="container"> 
-                <p> + </p>
-                <p>{{post.likePosts|length}} likes</p> 
-                <p> - </p>
+                 <a href="{{path("post_like", {"id":post.id} )}}">
+                {% if app.user and post.isLikedByUser(app.user) %}
+                <p>{{post.likePosts|length}} <i class="fas fa-thumbs-up"></i></p>
+                {% else %}
+                <p>{{post.likePosts|length}} <i class="far fa-thumbs-up"></i></p> 
+                {% endif %}
+               </a>
+                
                 </div>
         </div>
         {% endfor %} 
