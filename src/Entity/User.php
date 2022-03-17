@@ -51,6 +51,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: LikeComment::class, orphanRemoval: true)]
     private $likeComments;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="github_id", type="string", length=255, nullable=true, options={"default"="NULL"})
+     */
+    private $githubId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="github_access_token", type="string", length=255, nullable=true, options={"default"="NULL"})
+     */
+    private $githubAccessToken;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -284,4 +298,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+//     public function getGithubId(): ?string
+//     {
+//         return $this->githubId;
+//     }
+
+//     public function setGithubId(?string $githubId): self
+//     {
+//         $this->githubId = $githubId;
+
+//         return $this;
+//     }
+// 
 }
