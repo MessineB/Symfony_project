@@ -51,19 +51,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: LikeComment::class, orphanRemoval: true)]
     private $likeComments;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="github_id", type="string", length=255, nullable=true, options={"default"="NULL"})
-     */
-    private $githubId;
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="github_access_token", type="string", length=255, nullable=true, options={"default"="NULL"})
-     */
-    private $githubAccessToken;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $githubId;
 
     public function __construct()
     {
@@ -299,16 +291,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-//     public function getGithubId(): ?string
-//     {
-//         return $this->githubId;
-//     }
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
-//     public function setGithubId(?string $githubId): self
-//     {
-//         $this->githubId = $githubId;
+        return $this;
+    }
 
-//         return $this;
-//     }
-// 
+    public function getGithubId(): ?string
+    {
+        return $this->githubId;
+    }
+
+    public function setGithubId(?string $githubId): self
+    {
+        $this->githubId = $githubId;
+
+        return $this;
+    }
+
 }

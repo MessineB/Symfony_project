@@ -35,7 +35,7 @@ class SecurityController extends AbstractController
         public function connect(ClientRegistry $clientRegistry): RedirectResponse
     {
         /** @var GithubClient $client */
-        $client = $clientRegistry->getClient('github');
+        $client = $clientRegistry->getClient('github_main');
         return $client->redirect(['read:user', 'user:email']);
     }
 
