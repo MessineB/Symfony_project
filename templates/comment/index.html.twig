@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}voici les commentaires du post{% endblock %}
+
+{% block body %}
+
+<div class="container"> 
+                <h1> {{post.title}} </h1>
+                <p><strong>Ce post a etait crée le : </strong>{{post.createdAt|date('d-m-Y h:i:s')}}
+                <p>{{post.content}}<p> 
+                <div class="container"> 
+                <p> + </p>
+                <p>{{post.likePosts|length}} likes</p> 
+                <p> - </p>
+                </div>
+        </div>
+
+{% for comment in comments %}
+        <div class="container"> 
+                <p><strong>Ce comment a etait crée le : </strong>{{comment.createdAt|date('d-m-Y h:i:s')}}
+                <p>{{comment.content}}<p> 
+                <div class="container">
+                <a href="#" class="btn btn-link js-like-link">
+               <a href="{{path("comment_like", {"id":comment.id} )}}"> 
+                {% if app.user and comment.isLikedByUser(app.user) %}
+                <p>{{comment.likecomments | length}} <i class="fas fa-thumbs-up"></i></p>
+                {% else %}
+                <p>{{comment.likecomments | length}} <i class="far fa-thumbs-up"></i></p> 
+                {% endif %}
+               </a> 
+                </a>
+                </div>
+        </div>
+        {% endfor %} 
+
+{% if app.user %}
+<section class="container">
+        <div class="row">
+            <div class="col">
+                {{ form_start(form) }}
+                    <fieldset class"mb-3">
+                        <legend>Postez votre commentaire</legend>
+                            {{ form_row(form.content) }}
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary btn-lg my-3">postez votre commentaire</button>
+                {{ form_end(form) }}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    
+      
+      
+{% endblock %}

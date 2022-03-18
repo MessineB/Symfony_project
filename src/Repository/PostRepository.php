@@ -13,6 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Post|null findOneBy(array $criteria, array $orderBy = null)
  * @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * 
  */
 class PostRepository extends ServiceEntityRepository
 {
@@ -44,6 +45,18 @@ class PostRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+     /**
+      * @return Post[] Returns an array of Post objects
+      */
+      public function findByDate()
+    {
+        return $this->createQueryBuilder('p')
+        ->orderBy('p.createdAt', 'DESC')
+        ->getQuery()
+        ->getResult();
+    }
+
 
     // /**
     //  * @return Post[] Returns an array of Post objects

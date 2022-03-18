@@ -1,0 +1,23 @@
+
+{% extends "base.html.twig"  %}
+        {% block body %} 
+        {% for post in posts %}
+        <div class="container"> 
+                <a href=" {{path('show_post', {id:post.id}) }}" ><h1> {{post.title}} </h1></a>
+                <p><strong>Ce post a etait crée le : </strong>{{post.createdAt|date('d-m-Y h:i:s')}}
+                <p>{{post.content}}<p> 
+                <div class="container"> 
+                <p> + </p>
+                <p>{{post.likePosts|length}} likes</p> 
+                <p> - </p>
+                </div>
+        </div>
+        {% endfor %} 
+
+        {% if app.user %}
+      {{form_start(form)}}
+       {{form_end(form)}}
+      {% endif %}  
+{% endblock %}
+
+   
