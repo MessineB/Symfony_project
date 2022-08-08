@@ -41,9 +41,10 @@
                 <button class="btn btn-lg btn-primary mt-3" type="submit">
                     Se connecter
                 </button>
-                <button class="btn btn-lg btn-primary mt-3" type="submit">
-                    Se connecter avec Github
-                </button>
+                <a href="{{ path('connect_github') }}" class="btn btn-primary mt-3">
+                    <span>Connexion avec GitHub</span>
+                </a>
+                
                 <a href="{{ path('app_register') }}" class="btn btn-secondary mt-3">M'inscrire</a>
                 <a href="{{ path('app_forgot_password_request') }}" class="btn btn-secondary mt-3">Mot de passe oublié</a>
 

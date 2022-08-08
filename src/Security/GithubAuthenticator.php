@@ -68,10 +68,11 @@ class GithubAuthenticator extends OAuth2Authenticator
                     $existingUser
                         ->setEmail($githubUser->getEmail())
                         ->setGithubId($githubUser->getId())
-                        ->setRoles(['ROLE_USER'])
-                        ->setPassword('')
                         ->setFirstname('firstname')
                         ->setLastname('lastname')
+                        ->setLastname('username')
+                        ->setRoles(['ROLE_USER'])
+                        ->setPassword('')
                         ->setIsVerified(true)
                         ->setUsername($githubUser->getName());
                     ;

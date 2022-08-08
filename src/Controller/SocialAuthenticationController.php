@@ -15,7 +15,6 @@ class SocialAuthenticationController extends AbstractController
     {
         //Redirect to github
         return $clientRegistry->getClient('github')->redirect([
-            'user',
             'user:email'
         ], []);
     }
